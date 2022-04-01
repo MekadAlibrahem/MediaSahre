@@ -1,0 +1,96 @@
+:root{
+    --bg-main : #0a67f1 ;
+    --bg-2 :#54eba5 ;
+    --font-color-main : #0070f0 ;
+}
+@font-face { font-family: "Kalam"; src: url("https://fonts.gstatic.com/s/kalam/v15/YA9Qr0Wd4kDdMtDqHTLMkiQ.woff2");}
+body{
+    font-family:"Kalam" ;
+    background-color: #f6f6f6;
+}
+.main-nav{
+    background-color: var(--bg-main);
+}
+header{
+    background-image: url("../images/hero_tile.png");
+    background-size:contain ;
+    /* padding:  30px; */
+    color:  var(--font-color-main);
+    min-height: 300px;
+    /* height: calc(100vh - 250px); */
+    position: relative;
+}
+header .container .row{
+    /* padding-top: 15% ; */
+    color:  white;
+
+}
+header .container  .row {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: auto;
+    max-width: 100%;
+}
+
+.special-heading {
+    color: #dbdbdb;
+    font-size: 90px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin: 0;
+  }
+  
+.special-heading + p {
+    margin: -30px 0 0;
+    font-size: 20px;
+    text-align: center;
+    color: #797979;
+}
+.servise-card{
+    border: none;
+    background-color: inherit;
+}
+footer{
+    margin-top: 40px;
+    background-color: #1e232f;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+footer .nav{
+    background-color: inherit ;
+    color: inherit;
+}
+footer  .nav .nav-link{
+    color: white;
+}
+
+ @media (min-width = 720) {
+     header{
+     padding-right: 30%;
+         
+     }
+ }
+ /*  نموذج تسجيل الدخول و إنشاء حساب  */
+.aside-nav li:hover{
+    background-color: var(--bg-main);
+}
+.aside-nav li.active{
+    
+}
+
+.aside-nav  li a{
+    color: black; 
+    text-decoration: none;
+}
+.account td{
+    max-width: min-content;
+}
+.table-btn{
+    min-width: 50px;
+    max-width: 50px;
+}
+

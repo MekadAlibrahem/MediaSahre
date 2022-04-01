@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-5.1.3/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="./fontawesome6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .bg-success2{
+            background-color: #68cf8c;
+        }
+        .element{
+            align-self: center;
+            display: inline-block;
+            vertical-align: middle;
+            width: 30%;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .element-description {
+            text-transform: uppercase;
+            font-size: 10px;
+            font-weight: bold;
+            color: #B3BAC1;
+            margin-bottom: 10px;
+        }
+
+        .element-value {
+        color: #576366;
+        font-weight: bold;
+        font-size: 30px;
+        height: 37px;
+        vertical-align: bottom;
+        }
+        .card-body-delimiter {
+            background-color: #EDEFF1;
+            width: 40px;
+            height: 3px;
+            border-radius: 2px;
+            /* margin-top: 10px; */
+            margin-right:  calc(50% - 39px);
+            /* should be info-height + body-padding - delimiter-height / 2 = 108 + 10 - 2 = 116, but since info-values contains a kind of padding it is hardcoded */
+            /* (body-width - delimiter-width) / 2 = (300 - 40) / 2 = 130 */
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container mt-5" >
+        <div class="card   mb-3" style="width: 90%;">
+            <div class="card-header bg-success2 border-success text-center text-white">Header</div>
+                <div class="card-body text-success">
+                <p class="card-text">
+                    <div class="d-flex justify-content-center">
+                        <div class="element  ms-3 ">
+                            <div class="element-description"> Nummer </div>
+                            <div class="element-value">02</div>
+                        </div>
+                        <div class="element     ms-3">
+                            <div class="element-description">Minutter</div>
+                            <div class="element-value">60</div>
+                        </div>
+                        <div class="element  ms-3 ">
+                            <div class="element-description">Niveau</div>
+                            <div class="element-value" >C</div>
+                        </div>
+
+                    </div>
+                    <p class="card-body-delimiter mt-4"></p>
+
+                </div>
+            <div class="card-footer bg-transparent border-success">Footer</div>
+        </div>
+    </div>
+  
+
+
+
+
+
+
+
+    <script src="./bootstrap-5.1.3/js/bootstrap.min.js"></script>
+    <script src="./fontawesome6.0.0/js/all.min.js"></script>
+    <script src="./js/jquery3.6.js"></script>
+    <script src="./js/all.js"></script>
+</body>
+</html>
