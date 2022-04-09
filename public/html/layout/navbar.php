@@ -7,6 +7,14 @@ echo '
             <img src="../../resources/images/logo3.png" width="50" height="40" alt="">
             dataCloude
           </a>
+          <ul class="navbar-nav float-start d-none " id="show-log-in">
+            <li class="nav-item">
+            <a class="btn btn-primary"  role="button"   href="./login.php" >
+              تسجيل الدخول             
+            </a>
+            </li>
+            
+          </ul>
 
           <div id="navbar-setting"> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-setting" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

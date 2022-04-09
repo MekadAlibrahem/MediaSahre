@@ -1,31 +1,69 @@
 <?php
 
+include_once "../class.File.php" ;
+include_once "../class.Archive.php" ;
+use MediaShare\Files\File  ;
 use MediaShare\ManagerDataBase;
-$file =  $_GET['f'];
-$quoted = sprintf('"%s"', addcslashes(basename($file), '"\\'));
-$size   = filesize($file);
+function rcopy($src, $dst) {
+    
+    if(is_file($src)) {
+        copy($src , $dst);
+     }else {
+      mkdir($dst);
+      $files = scandir($src);
+      foreach ($files as $file)
+        if ($file != "." && $file != "..") {
+           
+            rcopy("$src/$file", "$dst/$file");
+        }
+    } 
+  }
+  
 
-header('Content-Description: File Transfer');
-header('Content-Type: application/octet-stream');
-header('Content-Disposition: attachment; filename=' . $quoted); 
-header('Content-Transfer-Encoding: binary');
-header('Connection: Keep-Alive');
-header('Expires: 0');
-header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-header('Pragma: public');
-header('Content-Length: ' . $size);
-readfile( ManagerDataBase::TEMPFOLDER . $quoted , true );
+try {
+    $Namefolder = time() ."_archive"  ;
+    $PathTempFolder = ManagerDataBase::FOLDERDOWNLOAD . $Namefolder ;
+    if(mkdir($PathTempFolder)  === true){
+        $result  = "" ;
+        foreach ($_GET['l'] as  $sourceFile) {
+            $file = File::CreatObject($sourceFile);
+            $sourceFilePath = ManagerDataBase::ROOTPATH . $file->getPath() . $file->getFileName() ;
+            $dest =  $PathTempFolder ."/" .  $file->getFileName() ;
+           
+            // $spl =  new SplFileInfo($sourceFilePath);
+                rcopy($sourceFilePath , $dest);
+           
+        }
+    
+        $temp_zip_name = $Namefolder . ".zip" ;
+        $temp_zip_file = ManagerDataBase::FOLDERDOWNLOAD . $temp_zip_name ; 
+        $isZip = Archive::zip($PathTempFolder , $temp_zip_file);
+        if($isZip === true ){
+            $user_folder = File::CreatObject($_GET['f']);
+    
+            $user_path_file = ManagerDataBase::ROOTPATH . $user_folder->getPath() . $user_folder->getFileName()   ;
+            $isCopy = copy($temp_zip_file , "$user_path_file/$temp_zip_name" );
+            // $isCopy = File::xcopy($temp_zip_file , $user_path_file);
+            $isInsert = File::insertFolderInDataBase("$user_path_file/$temp_zip_name" , $user_folder->getFileID());
+            $delete = File::deleteContent($PathTempFolder);
+            rmdir($PathTempFolder);
+            unlink($temp_zip_file);
+            echo json_encode(array("status" => true  , "result" => $result   ));
+        }else{
+            echo json_encode(array("status" => false  , 'error' => "error"   ));
+        }
+    }else{
+        echo json_encode(array("status" => false  , 'error' => "mkdir temp folder " , 'p' => $PathTempFolder));
+    }
+
+    
+
+   
 
 
-
-
-// include_once "../class.ManagerDataBase.php";
-// $filezipName  = $_GET['f'];
-// header('Content-Type: application/zip');
-// header('Content-disposition: attachment; filename='.$filezipName);
-// header('Content-Length: ' . filesize($filezipName));
-// readfile(ManagerDataBase::TEMPFOLDER . $filezipName , true);
-// unlink(ManagerDataBase::TEMPFOLDER.$filezipName);
-
+   
+} catch (Exception $e) {
+    echo json_encode(array("status" => false , "error" => $e->getMessage() ));
+}
 
 ?>

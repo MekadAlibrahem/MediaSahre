@@ -1,12 +1,13 @@
 <?php
 include_once "../../class.ManagerDataBase.php" ;
 use MediaShare\ManagerDataBase;
-$file =  ManagerDataBase::FOLDERDOWNLOAD . $_GET['f'];
+$file =  __DIR__ .'\\'. $_GET['f'];
 $quoted = basename($file) ;
 $size   = filesize($file);
 echo $file ."<br>" ;
-echo $quoted ."<br>" ; 
+echo $quoted ."=> qq <br>" ; 
 $infoFile =  pathinfo($file);
+$file_extension =  $infoFile['extension'] ;
 if(file_exists($file)){
     
     header('Content-Description: File Transfer');
@@ -17,7 +18,7 @@ if(file_exists($file)){
         header('Content-Length: ' . $size);
         echo "zip" ;
     }else{
-        header('Content-Type: application/octet-stream');
+        header("Content-Type: application/$file_extension");
         header('Content-Disposition: attachment; filename=' . $quoted); 
         header('Content-Transfer-Encoding: binary');
         header('Connection: Keep-Alive');
@@ -29,7 +30,7 @@ if(file_exists($file)){
     }
    
     readfile($file , true );
-    unlink($file);
+    // unlink($file);
     
 }
 else{

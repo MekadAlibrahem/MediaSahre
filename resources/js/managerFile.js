@@ -106,7 +106,7 @@ function showFiles(list){
                 "<td id='size_file_"+item.id+"' > "+item.size+"  </td>"+
                 "<td> "+
                     "<div class='btn-group text-end' role='group' aria-label='Basic mixed styles example'>"+
-                    "<button class='btn btn-primary' type='button' onclick='copylink(\'"+item.link+"\');'> <i class='fa fa-link'> </i></button>" +
+                    "<button class='btn btn-primary' type='button' onclick='copylink(\""+item.link+"\");'> <i class='fa fa-link'> </i></button>" +
                     "<button class='btn btn-primary'data-bs-toggle='modal' data-bs-target='#modelEditFileName' type='button' onclick='editName("+item.id+");'> <i class='fa fa-edit'> </i></button>" +
                     "<button class='btn btn-primary'data-bs-toggle='modal' data-bs-target='#' type='button' onclick='download("+item.id+");'> <i class='fa fa-download'> </i></button>" +
                     "<button class='btn btn-primary'data-bs-toggle='modal' data-bs-target='#modelEditType' type='button' onclick='lock("+item.id+");'  > <i class='fa fa-lock'> </i></button>" +

@@ -22,14 +22,14 @@ session_start() ;
     ?>
     <style>
         button, input[type="submit"], input[type="reset"] {
-        background: none;
-        color: inherit;
-        border: none;
-        padding: 0;
-        font: inherit;
-        cursor: pointer;
-        outline: inherit;
-    }
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
         .page-content{
             min-height: calc(100vh - 50px);
             background: #181c25 !important;

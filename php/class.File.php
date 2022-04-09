@@ -1,24 +1,8 @@
 <?php
 namespace MediaShare\Files {
-    /**
-     *  لازم تراجع دالة الحذف تاكد من التنفيذ تبعها 
-     * 
-     * 
-     * 
-     */
 
-    /** 
-     *  دوال  الاساسية تم تنفيذها 
-    * دالة إنشاء ملف 
-    * دالة إنشاء مجلد
-    *  دوال التعديل ( الاسم  -  النوع )
-    * دالة حذف مجدل او ملف 
-    * دالة نسخ 
-    * دالة حذف 
-    * دوال إدارة المشاهدين لملف (إضافة - حذف -جلب قائمة بهم لملف ما  )
-    */
+
     use Exception;
-    use mysqli;
     use SplFileInfo ;
     use DirectoryIterator ;
     use MediaShare\ManagerDataBase ;
@@ -733,13 +717,14 @@ namespace MediaShare\Files {
                 foreach ($listID as  $id){
                     $child = File::CreatObject($id);
                     $path = ManagerDataBase::ROOTPATH . $child->getPath(). "/" . $child->getFileName();
+                    $isfile = is_file($path ) ? 1 : 0 ;
                     array_push($listFile , [
                             'id'        => $child->getFileID(),
                             'name'      => $child->getFileName(),
-                            'isFile'    => is_file($path ) ? 1 : 0,
+                            'isFile'    => $isfile ,
                             'type'      => filetype($path),
                             'size'      => File::formatBytes(File::getSizeFolder($path)),
-                            'link'      => ManagerDataBase::PATHDOWNLOAD . "f=" . $child->getFileID()
+                            'link'      => ManagerDataBase::PATHDOWNLOAD . "id=" . $child->getFileID() ."&file=$isfile" 
                             ]
                         );
                 }
@@ -791,23 +776,23 @@ namespace MediaShare\Files {
         // method not used any more  
 
 
-            public static function getTreeFile($root , $id){
-                $id += 1;
-                if(is_dir($root)){
-                    $list = File::getListFileInDir($root);
-                    echo "<pre>" ;
-                    print_r(self::CreatObject(-1 , basename($root) , 8 , 70 ,1));
-                    echo "</pre>";
-                    
-                    foreach ($list as $file) {
-                        self::getTreeFile($root ."/".$file , $id);
-                    }
-                }else{
-                    echo "<pre>" ;
-                    print_r(self::CreatObject(-1 , basename($root) , 8 , 70 ,1));
-                    echo "</pre>";
-                }  
-            }
+        public static function getTreeFile($root , $id){
+            $id += 1;
+            if(is_dir($root)){
+                $list = File::getListFileInDir($root);
+                echo "<pre>" ;
+                print_r(self::CreatObject(-1 , basename($root) , 8 , 70 ,1));
+                echo "</pre>";
+                
+                foreach ($list as $file) {
+                    self::getTreeFile($root ."/".$file , $id);
+                }
+            }else{
+                echo "<pre>" ;
+                print_r(self::CreatObject(-1 , basename($root) , 8 , 70 ,1));
+                echo "</pre>";
+            }  
+        }
 
 
         

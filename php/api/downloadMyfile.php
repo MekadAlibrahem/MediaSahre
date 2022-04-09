@@ -13,7 +13,7 @@ if($isValid === true){
         if(is_file($sourseFile)){
             $filezipName =  time() . $file->getFileName();
 
-            $dest =  ManagerDataBase::FOLDERDOWNLOAD . time(). '_' . $file->getFileName() ;
+            $dest =  ManagerDataBase::FOLDERDOWNLOAD . time(). $file->getFileName() ;
             copy($sourseFile , $dest );
             echo json_encode(array('status'=> true , "f"=>$filezipName ));
 

@@ -17,7 +17,7 @@ use PDO;
     const BANKTABLE     = "bank_account_table" ;
 
     // columns Name in User Table in data Base
-    const USERSTABLE_USERID = "id" ;
+    const USERSTABLE_USERID = "user_id" ;
     const USERSTABLE_USERNAME = "name" ;
     const USERSTABLE_EMAIL = "email" ;
     const USERSTABLE_PASSWORD = "password"  ;
@@ -49,7 +49,7 @@ use PDO;
     const TEMPFOLDER = "C://xampp/htdocs/mediashare/public/temp/";
     const FOLDERDOWNLOAD = "C://xampp/htdocs/MediaShare/php/api/download/" ;
     const TEMPFOLDERSERVER = "http://localhost/MediaShare/public/temp/" ;
-    const PATHDOWNLOAD = "http://localhost/MediaShare/php/api/download/download.php?" ;
+    const PATHDOWNLOAD = "http://localhost/MediaShare/public/html/downloadPage.php?" ;
 
     public static function connectDataBase(){
         $mysqli  = mysqli_connect(self::HOSTNAME , self::USERNAME , self::PASSWORD , self::DATABASE);

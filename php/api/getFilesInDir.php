@@ -17,36 +17,9 @@ try{
 
     
 }catch(Exception $e){
-echo json_encode(array("status" => false , "error" =>$e->getMessage() ));
+    echo json_encode(array("status" => false , "error" =>$e->getMessage() ));
 
 }
-
-
-// $list = array(
-//     [ 
-//         "id"=> "1" ,
-//         "name"=>"folder1" ,
-//         "isFile"=> false ,
-//         "type"=> "folder" ,
-//         "size"=> "123.42 MB",
-//         "link"=> "sdsdsdsa"
-//     ],
-   
-// );
-// $path = array( "count"=>2 , 
-//     "list"=>array(
-//         [
-//             "name"  => "f1" ,
-//             "id"    => "1"  ,
-//             "end"   => false
-//         ],
-//     )
-      
-    
-
-// );
-
-
 
 
 

@@ -215,7 +215,7 @@ session_start() ;
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">تعديل اسم المستخدم </h5>
+        <h5 class="modal-title" id="exampleModalLabel"> تعديل كلمة المرور   </h5>
       </div>
       <div class="modal-body">
         <form id="passowrdfrom" accept-charset="utf8" >
