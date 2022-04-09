@@ -1,2 +1,2 @@
 # MediaSahre
-web site to stored files and shire it
+web site to store files and share it
