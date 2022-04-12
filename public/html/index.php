@@ -129,14 +129,9 @@
             <div>
               <ul class="nav justify-content-center">
                 <li class="nav-item">
-                  <a class="nav-link  " aria-current="page" href="#"> علي ديب </a>
+                  <a class="nav-link  " aria-current="page" href="https://mekadalibrahem.github.io/Portfolio/"> Mekad Alibrahem </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> ياسين خليل </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">لميس حسن</a>
-                </li>
+               
               </ul>
             </div>
           </div>
